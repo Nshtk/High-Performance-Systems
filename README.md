@@ -1,2 +1,5 @@
-# High-Performance-Systems
- 
+# М8О-214М-23, Солдатов В.А.
+
+## Прогресс
+- [x] [lab1](lab1) [lab1-python](lab1-python)
+- [ ] ...
