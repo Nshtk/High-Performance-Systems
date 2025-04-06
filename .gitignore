@@ -293,5 +293,6 @@ cython_debug/
 #.idea/
 /lab1/.vscode
 /lab1-python/Data
-/lab1/Data
 /lab1-python/.vscode
+/lab1/Data/*
+!.gitkeep

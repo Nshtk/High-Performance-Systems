@@ -1,10 +1,8 @@
 #!/bin/bash
 
-PROJECT_NAME="lab1.Core"
-
 if [[ ${1} == "-help" || ${1} == "--help" ]]; then
 	echo "Usage: build.sh [ARCHITECTURE]
-Example: build.sh linux-x64
+Example: ./build.sh linux-x64
 Information: see dotnet publish specifications for list of available architectures." 
 	exit 0
 elif [[ -z "${1// }" ]]; then
@@ -12,6 +10,7 @@ elif [[ -z "${1// }" ]]; then
 	exit 1
 fi
 
+PROJECT_NAME="lab1.Core"
 OUTPUT="$(cd Source && dotnet publish -c Release -p:PublishAot=true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true -p:TrimMode=Link -r ${1} --self-contained)"
 if [[ $? == 0 && ! ${OUTPUT} =~ "error" ]]; then
 	chown -R 1000 ./Source/${PROJECT_NAME}/bin/Release/net8.0/${1}

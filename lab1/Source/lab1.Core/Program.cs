@@ -17,9 +17,16 @@ public static class Program
 
 		try
 		{
-			using (IProducer<Null, string> producer = new ProducerBuilder<Null, string>(config).Build())
+			using (IProducer<Null, string> producer = new ProducerBuilder<Null, string>(config).SetLogHandler((_, message) =>
+			{
+				if (!message.Message.Contains("Configuration property"))
+				{
+					Console.WriteLine(message.Message);
+				}
+			}).Build())
 			{
 				DeliveryResult<Null, string> result = await producer.ProduceAsync(topic, new Message<Null, string> { Value = message }, ct);
+				Console.WriteLine("Message sent.");
 			};
 		}
 		catch (Exception ex)
@@ -45,7 +52,7 @@ public static class Program
 					Console.WriteLine(ex.Message);
 					continue;
 				}
-				Console.WriteLine(result.Message.Value);
+				Console.WriteLine($"Consumed: {result.Message.Value}");
 			}
 		}
 	}
