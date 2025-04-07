@@ -35,7 +35,7 @@ services:
       dockerfile: ./Dockerfile
     #Uncomment line below to enable local kafka. #Provide "-use_local_kafka" "-kafka_bootstrap" "kafka:9092" arguments for local kafka. 
     command: ["-use_local_kafka", "-kafka_bootstrap", "kafka:9092", "-username_sasl", "adminkafka", "-password_sasl", "39QCgYrPLU", "-keystore_location", "Data/keystore_reg.pfx","-keystore_password", "12345678"]
-    #command: ["-kafka_bootstrap", "80.85.250.67:9092", "-username_sasl", "adminkafka", "-password_sasl", "39QCgYrPLU", "-keystore_location", "Data/keystore_reg.pfx","-keystore_password", "12345678"]
+    #command: ["-kafka_bootstrap", "80.85.250.67:9091", "-username_sasl", "adminkafka", "-password_sasl", "39QCgYrPLU", "-keystore_location", "Data/keystore_reg.pfx","-keystore_password", "12345678"]
     stdin_open: true
     tty: true
     volumes:
