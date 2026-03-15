@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  activemq:
+    mode: native
+    broker-url: "(tcp://185.159.111.149:61616,tcp://185.159.111.149:61618)?ha=true"
+    user: maiadmin
+    password: eeL1j1C2yZ
+    packages:
+      trust-all: true
+    pool:
+      enabled: true
+      max-connections: 10
+
+app:
+  queues:
+    input: MAI.TEST.SOLDATOV_VA.RQ #SENDER.QUEUE
+    output: MAI.TEST.SOLDATOV_VA.RS #RECEIVER.QUEUE
+
+logging:
+  level:
+    root: INFO
+    com.example.artemisservice: DEBUG

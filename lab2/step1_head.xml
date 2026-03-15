@@ -1,0 +1,14 @@
+<Headers>
+	<JMSHeaders>
+		<JMSDeliveryMode>1</JMSDeliveryMode>
+		<JMSExpiration>60000</JMSExpiration>
+		<JMSPriority>5</JMSPriority>
+		<JMSType>3</JMSType>
+	</JMSHeaders>
+	<JMSProperties>
+		<MSGUID>${msguid}</MSGUID>
+		<SERVICENAME>SrvCancelDKO</SERVICENAME>
+		<SENDER>CCPPCODE</SENDER>
+		<RECEIVER>DKO</RECEIVER>
+	</JMSProperties>
+</Headers>

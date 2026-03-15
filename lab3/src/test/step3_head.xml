@@ -1,0 +1,10 @@
+<Headers>
+	<JMSHeaders>
+		<JMSDeliveryMode>1</JMSDeliveryMode>
+		<JMSPriority>5</JMSPriority>
+		<JMSType>3</JMSType>
+	</JMSHeaders>
+	<JMSProperties>
+		<UIPSYSTEMDATA>${uipsystemdata}</UIPSYSTEMDATA>
+	</JMSProperties>
+</Headers>

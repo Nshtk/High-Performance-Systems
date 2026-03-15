@@ -156,6 +156,7 @@ public static class Program
 				BootstrapServers = kafka_bootstrap_addresses,
 				SecurityProtocol = SecurityProtocol.SaslSsl,
 				SaslMechanism = SaslMechanism.Plain,
+				
 				SaslUsername = username_sasl,
 				SslKeystoreLocation = path_keystore,
 				SslKeystorePassword = password_keystore,

@@ -1,0 +1,9 @@
+<Headers>
+	<JMSHeaders>
+		<JMSDeliveryMode>1</JMSDeliveryMode>
+		<JMSExpiration>60000</JMSExpiration>
+		<JMSPriority>5</JMSPriority>
+	</JMSHeaders>
+	<JMSProperties>
+	</JMSProperties>
+</Headers>
