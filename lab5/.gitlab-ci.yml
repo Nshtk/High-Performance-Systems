@@ -1,0 +1,49 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  IMAGE_NAME: simple-notebook
+  REGISTRY_IMAGE: ${CI_REGISTRY}/${CI_PROJECT_PATH}/${IMAGE_NAME}
+
+stages:
+  - sonar-check
+  - build
+
+sonarqube-check:
+  stage: sonar-check
+  image: 
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+    GIT_DEPTH: "0"
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script: 
+    - sonar-scanner
+  allow_failure: true
+  only:
+    - main
+
+build-docker-image:
+  image: docker:28.1.1
+  stage: build
+  services:
+    - name: docker:28.1.1-dind
+      alias: docker
+  variables:
+    DOCKER_HOST: "tcp://docker:2376"
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+  before_script:
+    - until docker info; do sleep 1; done;
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login harbor.bankingapi.ru/student11 -u "$CI_REGISTRY_USER" --password-stdin
+    - docker build -t harbor.bankingapi.ru/student11/lab5:latest .
+    - docker push harbor.bankingapi.ru/student11/lab5:latest
+  only:
+    - main
